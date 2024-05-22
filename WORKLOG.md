@@ -4,7 +4,7 @@
 
 ### Wed, 5/22
 
-Start on outline of project(create branches, processing sketches) and begin researching implementation of audio steganography and file types.
+Start on outline of project(create branches, processing sketches) and begin researching implementation of audio steganography and file types. Notes/planning document: https://docs.google.com/document/d/1oLgrYbuv7iW_9uCib4jDbt9lGG-MdMGzmmYyTHb14_0/edit.
 
 ### date y
 
