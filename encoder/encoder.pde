@@ -23,9 +23,13 @@ void draw() {
 }
 
 void encodeMessage(SoundFile sfile, String msg) {
-  String[] binMsg = new String[msg.length()];
-  for (int i=0; i<msg.length(); i++) {
-    char c = msg.charAt(i);
-    binMsg[i] += String.format("%8s", Integer.toBinaryString(c));
+  for (int i=0; i<20; i++) {
+    println(sfile[i].sampleRate());
   }
+  
+  //String[] binMsg = new String[msg.length()];
+  //for (int i=0; i<msg.length(); i++) {
+  //  char c = msg.charAt(i);
+  //  binMsg[i] += String.format("%8s", Integer.toBinaryString(c));
+  //}
 }
