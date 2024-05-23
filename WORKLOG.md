@@ -13,9 +13,11 @@ info
 
 ## GROUP MEMBER 2: Regina Chen
 
-### date x
+### Wed, 5/22
 
-info
+--Research on implementing audio files and manipulating it in processing. 
+--Started on encoding String into audio file, using .wav file extension. 
+--Added a .wav file into sketch for testing
 
 ### date y
 
