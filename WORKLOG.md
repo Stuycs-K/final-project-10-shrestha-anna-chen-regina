@@ -8,7 +8,7 @@ Start on outline of project(create branches, processing sketches) and begin rese
 
 ### Thurs, 5/23
 
-Do more research on Audacity and try to get test encoded images.
+Do more research on Audacity and try to get encoded audio to test decoder. Look through Java's AudioSystem and Processing's Sound library. Outline of decode started, need to research bitrates/byte arrays/spectrograms.
 
 
 ## GROUP MEMBER 2: Regina Chen
