@@ -19,6 +19,8 @@ Do more research on Audacity and try to get encoded audio to test decoder. Look 
 - Started on encoding String into audio file, using .wav file extension.
 - Added a .wav file into sketch for testing
 
-### date y
+### Thur, 5/23
 
-info
+- trying out the different methods in sound library
+- trying out frames and channels to manipulate the ultrasound range for embedding another audio file
+- playing around with audacity
