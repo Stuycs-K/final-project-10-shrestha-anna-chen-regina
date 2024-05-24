@@ -1,9 +1,13 @@
 import java.util.Arrays;
 import java.io.*;
 import processing.sound.*;
+import ddf.minim.*;
 
 SoundFile displayfile = new SoundFile(this, "Sway_to_My_Beat_in_Cosmos_Instrumental.wav");
 SoundFile hiddenfile = new SoundFile(this, "WHITE_NIGHT_Instrumental.wav");
+
+Minim minim;
+AudioPlayer player;
 
 int ultrasoundSI = 48000; //ultrasound start index
 String secretMsg = "This is a secret message!";
