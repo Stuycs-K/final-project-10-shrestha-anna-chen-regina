@@ -6,9 +6,17 @@
 
 Start on outline of project(create branches, processing sketches) and begin researching implementation of audio steganography and file types. Notes/planning document: https://docs.google.com/document/d/1oLgrYbuv7iW_9uCib4jDbt9lGG-MdMGzmmYyTHb14_0/edit.
 
-### Thurs, 5/23
+### Thur, 5/23
 
-Do more research on Audacity and try to get encoded audio to test decoder. Look through Java's AudioSystem and Processing's Sound library. Outline of decode started, need to research bitrates/byte arrays/spectrograms.
+Do more research on Audacity (how to view frequency) and try to get encoded audio to test decoder. Look through Java's AudioSystem and Processing's Sound library. Outline of decode started, need to research bitrates/byte arrays/spectrograms.
+
+### Fri, 5/24
+
+Attempt to start decode using java's audio manipulation commands. Trying to change frequency to hide at inaudible frequencies and use least sig bit encoding but confused by bitrate and the number of bits in a second-which bit do we encode in?? Looking through AudioInputStream, FloatControl, and the Discrete/Fast Fourier Transform. Also researched pulse-code modulation (PCM) encoding --> lossless compression method (bitstream is lossy).
+
+### Thur, 5/23
+
+D
 
 
 ## GROUP MEMBER 2: Regina Chen
