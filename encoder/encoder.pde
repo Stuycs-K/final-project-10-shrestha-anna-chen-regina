@@ -3,16 +3,15 @@ import java.io.*;
 import processing.sound.*;
 import ddf.minim.*;
 
-SoundFile displayfile = new SoundFile(this, "Sway_to_My_Beat_in_Cosmos_Instrumental.wav");
-SoundFile hiddenfile = new SoundFile(this, "WHITE_NIGHT_Instrumental.wav");
+//SoundFile displayfile = new SoundFile(this, "Sway_to_My_Beat_in_Cosmos_Instrumental.wav");
+//SoundFile hiddenfile = new SoundFile(this, "WHITE_NIGHT_Instrumental.wav");
 
-Minim minim;
-AudioPlayer player;
+Minim minim = new Minim(this);
+AudioPlayer displayfile = minim.loadFile("Sway_to_My_Beat_in_Cosmos_Instrumental.wav");
+AudioPlayer hiddenfile = minim.loadFile("WHITE_NIGHT_Instrumental.wav");
 
 int ultrasoundSI = 48000; //ultrasound start index
 String secretMsg = "This is a secret message!";
-
-float[] hiddenLeft = hiddenfile.left();
 
 int STRING = 0;
 int IMG = 1;
@@ -49,6 +48,10 @@ void encodeMessage(SoundFile displayfile, String msg) {
 
 void encodeAudio(SoundFile displayfile, SoundFile hiddenfile) {
   if (hiddenfile.frames() <= displayfile.frames() - ultrasoundSI) {
+    for (int i=0; i<hiddenfile.frames(); i++) {
+      float hiddenLeft = hiddenfile.get(i);
+    }
+
     
   }else println("Hidden file too large to embed.");
 }
