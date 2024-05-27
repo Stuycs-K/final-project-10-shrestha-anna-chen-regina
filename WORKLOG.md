@@ -14,7 +14,15 @@ Do more research on Audacity (how to view frequency) and try to get encoded audi
 
 Attempt to start decode using java's audio manipulation commands. Trying to change frequency to hide at inaudible frequencies and use least sig bit encoding but confused by bitrate and the number of bits in a second-which bit do we encode in?? Looking through AudioInputStream, FloatControl, and the Discrete/Fast Fourier Transform. Also researched pulse-code modulation (PCM) encoding --> lossless compression method (bitstream is lossy).
 
-### Thur, 5/23
+### Sun, 5/26
+
+Start working on video script (background about audio steganography and spectrograms).
+
+### Mon, 5/26
+
+D
+
+### Mon, 5/26
 
 D
 
