@@ -1,57 +1,49 @@
-import java.util.Arrays;
-import java.io.*;
-import processing.sound.*;
 import ddf.minim.*;
 
-//SoundFile displayfile = new SoundFile(this, "Sway_to_My_Beat_in_Cosmos_Instrumental.wav");
-//SoundFile hiddenfile = new SoundFile(this, "WHITE_NIGHT_Instrumental.wav");
-
-Minim minim = new Minim(this);
-AudioPlayer displayfile = minim.loadFile("Sway_to_My_Beat_in_Cosmos_Instrumental.wav");
-AudioPlayer hiddenfile = minim.loadFile("WHITE_NIGHT_Instrumental.wav");
-
-int ultrasoundSI = 48000; //ultrasound start index
-String secretMsg = "This is a secret message!";
-
-int STRING = 0;
-int IMG = 1;
-int AUDIO = 2;
-int MODE = 0;
+Minim minim;
+AudioPlayer player;
 
 void setup() {
-  size(200, 200);
-    
-  if (MODE == 0) {
-    encodeMessage(displayfile, secretMsg);
-  }else if (MODE == 1) {
-  }else if (MODE == 2) {    
-    encodeAudio(displayfile, hiddenfile);
-  }
+  size(100, 100);
   
-  displayfile.play();
-}
-
-void draw() {
-}
-
-void encodeMessage(SoundFile displayfile, String msg) {
-  for (int i=0; i<20; i++) {
-    println(displayfile.sampleRate());
-  }
+  minim = new Minim(this);
   
-  //String[] binMsg = new String[msg.length()];
-  //for (int i=0; i<msg.length(); i++) {
-  //  char c = msg.charAt(i);
-  //  binMsg[i] += String.format("%8s", Integer.toBinaryString(c));
-  //}
+  // Load the original audio file
+  player = minim.loadFile("Sway_to_My_Beat_in_Cosmos_instrumental.wav");
+  
+  // Encode the string into binary
+  String message = "Hello, this is a hidden message!";
+  String binaryMessage = stringToBinary(message);
+  
+  // Modify the audio data to hide the binary message
+  encodeMessage(player, binaryMessage);
+  
+  // Save the modified audio file
+
+  
+  exit(); // Quit after saving the file
 }
 
-void encodeAudio(SoundFile displayfile, SoundFile hiddenfile) {
-  if (hiddenfile.frames() <= displayfile.frames() - ultrasoundSI) {
-    for (int i=0; i<hiddenfile.frames(); i++) {
-      float hiddenLeft = hiddenfile.get(i);
+String stringToBinary(String text) {
+  String binary = "";
+  for (char c : text.toCharArray()) {
+    binary += Integer.toBinaryString(c) + " ";
+  }
+  return binary;
+}
+
+void encodeMessage(AudioPlayer player, String binaryMessage) {
+  int sampleCount = player.bufferSize();
+  for (int i = 0; i < binaryMessage.length(); i++) {
+    if (i < sampleCount) {
+      int sample = (int) player.mix.get(i);
+      // Modify the least significant bit of the sample
+      if (binaryMessage.charAt(i) == '1') {
+        sample |= 1;
+      } else {
+        sample &= ~1;
+      }
+      player.mix.set(i, sample);
     }
-
-    
-  }else println("Hidden file too large to embed.");
+  }
 }
