@@ -10,10 +10,12 @@ void setup() {
   
   // Load the original audio file
   player = minim.loadFile("Sway_to_My_Beat_in_Cosmos_instrumental.wav");
+  player.play();
   
   // Encode the string into binary
   String message = "Hello, this is a hidden message!";
   String binaryMessage = stringToBinary(message);
+  println(binaryMessage);
   
   // Modify the audio data to hide the binary message
   encodeMessage(player, binaryMessage);
@@ -21,13 +23,14 @@ void setup() {
   // Save the modified audio file
 
   
-  exit(); // Quit after saving the file
 }
 
 String stringToBinary(String text) {
   String binary = "";
   for (char c : text.toCharArray()) {
-    binary += Integer.toBinaryString(c) + " ";
+    String bin = Integer.toBinaryString(c);
+    while (bin.length() < 8) bin = "0" + bin;
+    binary += bin + " ";
   }
   return binary;
 }
@@ -41,9 +44,9 @@ void encodeMessage(AudioPlayer player, String binaryMessage) {
       if (binaryMessage.charAt(i) == '1') {
         sample |= 1;
       } else {
-        sample &= ~1;
+        sample |= 0;
       }
-      player.mix.set(i, sample);
+      player.mix.; //trying to write back to audioplayer
     }
   }
 }
