@@ -40,3 +40,8 @@ D
 - trying out the different methods in sound library
 - trying out frames and channels to manipulate the ultrasound range for embedding another audio file
 - playing around with audacity
+
+### Fri, 5/24 to Mon 5-27
+- looking through AudioInputStream and  Fast Fourier Transform
+- tried using java but AudioInputStream gives error of "UnsupportedAudioFileException: File of unsupported format"
+- trying to encode string to audio file using lsb but didn't find function to write the manipulated sample back to audio buffer
