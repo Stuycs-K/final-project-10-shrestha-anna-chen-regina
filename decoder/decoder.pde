@@ -19,15 +19,18 @@ int MODE = 0;
 
 void setup() {
   size(200, 200);
-  File aud = new File("short_.Sway_to_My_Beat_in_Cosmos_instrumental.wav");
+  File aud = new File("Short_Sway.wav"); //file not found??
   //processing audio
   AudioInputStream stream = null;
+  AudioFormat format = null;
   try {
     stream  = AudioSystem.getAudioInputStream(aud);
+    format = stream.getFormat();
   }
   catch (Exception e) {
     e.printStackTrace();
   }
+  //System.out.println(format);
   
   
   //decode

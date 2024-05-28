@@ -18,9 +18,9 @@ Attempt to start decode using java's audio manipulation commands. Trying to chan
 
 Start working on video script (background about audio steganography and spectrograms).
 
-### Mon, 5/26
+### Tue, 5/27
 
-D
+Did more research on lsb audio steganography, attempted to use Python's wav module to manipulate audio bytes.
 
 ### Mon, 5/26
 
