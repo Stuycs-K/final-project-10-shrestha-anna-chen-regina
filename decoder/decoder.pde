@@ -19,7 +19,7 @@ int MODE = 0;
 
 void setup() {
   size(200, 200);
-  File aud = new File("Short_Sway.wav"); //file not found??
+  //File aud = new File("data/Short_Sway.wav"); //file not found??
   byte[] bytes = null;
   try {
     Path fPath = Paths.get("Short_Sway.wav");
