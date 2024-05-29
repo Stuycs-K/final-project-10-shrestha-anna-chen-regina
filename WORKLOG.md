@@ -20,7 +20,7 @@ Start working on video script (background about audio steganography and spectrog
 
 ### Tue, 5/27
 
-Did more research on lsb audio steganography, attempted to use Python's wav module to manipulate audio bytes.
+Did more research on lsb audio steganography, attempted to use Python's wav module to manipulate audio bytes. Realized we could use Files.readAllBytes(*Path*) to get bytes[]... We didn't need something specific to an audio file, and we can deal with frequency as an extra portion after we finish the rest. Decryption version 1 completed, tests needed to be run(find encrypting tools online).
 
 ### Mon, 5/26
 
