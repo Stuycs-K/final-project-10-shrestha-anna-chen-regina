@@ -22,6 +22,14 @@ Start working on video script (background about audio steganography and spectrog
 
 Did more research on lsb audio steganography, attempted to use Python's wav module to manipulate audio bytes. Realized we could use Files.readAllBytes(*Path*) to get bytes[]... We didn't need something specific to an audio file, and we can deal with frequency as an extra portion after we finish the rest. Decryption version 1 completed, tests needed to be run(find encrypting tools online).
 
+### Wed, 5/29
+
+Start testing decode (difficult without encode / terminating string). Steghide didn't have the terminating string so manually added it using hexdump. Moved to normal java file because Processing had file not found error. Realized loadBytes() was for all general files, and will be moving back into Processing and continuing tests.
+
+### Mon, 5/26
+
+D
+
 ### Mon, 5/26
 
 D
