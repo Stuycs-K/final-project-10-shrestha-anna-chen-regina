@@ -41,7 +41,12 @@ D
 - trying out frames and channels to manipulate the ultrasound range for embedding another audio file
 - playing around with audacity
 
-### Fri, 5/24 to Mon 5-27
+### Fri, 5/24 to Mon 5/27
 - looking through AudioInputStream and  Fast Fourier Transform
 - tried using java but AudioInputStream gives error of "UnsupportedAudioFileException: File of unsupported format"
 - trying to encode string to audio file using lsb but didn't find function to write the manipulated sample back to audio buffer
+
+### Tue, 5/28
+- starting a backup plan if encoding with frequency in audio files doesn't work
+- start on and finish encoding columnar transposition cipher
+- researching on how to decode columnar transposition cipher using brute force
