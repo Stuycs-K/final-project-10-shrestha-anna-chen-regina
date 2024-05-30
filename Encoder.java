@@ -18,58 +18,46 @@ public class Encoder {
     byte[] msgByte = message.getBytes();
     System.out.println("String to byte array: " + Arrays.toString(msgByte));
 
-    File aud = new File("Short_Sway.wav");
+    File aud = new File("Sway_to_My_Beat_in_Cosmos_instrumental.wav");
     byte[] bytes = null;
     try {
-      Path fPath = Paths.get("Short_Sway.wav");
-      byte[] holder = Files.readAllBytes(fPath); //consider header bytes
-      bytes = holder;
+      Path fPath = Paths.get("Sway_to_My_Beat_in_Cosmos_instrumental.wav");
+      bytes = Files.readAllBytes(fPath); //consider header bytes
     } catch (Exception e){
       e.printStackTrace();
     }
 
-    ArrayList<Byte> messageArray = encode(bytes, msgByte);
-    byte[] result = new byte[messageArray.size()-1]; //remove last terminating bit
-    for(int i = 0; i < result.length; i++){
-      result[i] = messageArray.get(i);
-    }
+    byte[] messageArray = encode(bytes, msgByte);
 
-    //decode
-    if (MODE == 0) {
-      //System.out.println(messageArray);
-      String text = new String(result, StandardCharsets.UTF_8);
-      System.out.println(text);
-    } else if (MODE == 1) {
-      try (FileOutputStream output = new FileOutputStream("decrypted.png")){
-          output.write(result);
-        }catch (IOException e){
-          e.printStackTrace();
-        }
-    } else {
-      try (FileOutputStream output = new FileOutputStream("decrypted.wav")){
-          output.write(result);
-        }catch (IOException e){
-          e.printStackTrace();
-        }
+    try (FileOutputStream output = new FileOutputStream("encrypt.wav")){
+      output.write(messageArray);
+    }catch (IOException e){
+      e.printStackTrace();
     }
 
   }
 
-  public static ArrayList<Byte> encode(byte[] bytes, bytes[] msgByte) {
-    ArrayList<Byte> result = new ArrayList<Byte>();
-    byte value = 0;
-    int n = 0;
-    while (value != (byte)0) { //terminating byte is 00000000 (tentatively)
-      value = 0;
-      for(int i = 0; i < 4; i++){
-        value = (byte)(value*4 + bytes[n*4+i]%4);
-        //println(bytes[n*4+i]%4+"+"+value*4+"="+value);
-      }
-      result.add(value);
-      n++;
+  public static byte[] encode(byte[] bytes, byte[] msgByte) {
+    int bi = 0;
+    for (int i=0; i<msgByte.length; i++) {
+      byte msgb = msgByte[i];
+
+      byte seg1 = (byte) ((msgb >> 6) & 0b11);
+      byte seg2 = (byte) ((msgb >> 4) & 0b11);
+      byte seg3 = (byte) ((msgb >> 2) & 0b11);
+      byte seg4 = (byte) (msgb & 0b11);
+
+      bytes[bi] = (byte) ((bytes[bi++] & 0b11111100) | seg1);
+      System.out.println("b1: " + bytes[bi-1]);
+      bytes[bi] = (byte) ((bytes[bi++] & 0b11111100) | seg2);
+      System.out.println("b2: " + bytes[bi-1]);
+      bytes[bi] = (byte) ((bytes[bi++] & 0b11111100) | seg3);
+      System.out.println("b3: " + bytes[bi-1]);
+      bytes[bi] = (byte) ((bytes[bi++] & 0b11111100) | seg4);
+      System.out.println("b4: " + bytes[bi-1]);
     }
 
-    return result;
+    return bytes;
   }
 
 }
