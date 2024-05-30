@@ -26,14 +26,6 @@ Did more research on lsb audio steganography, attempted to use Python's wav modu
 
 Start testing decode (difficult without encode / terminating string). Steghide didn't have the terminating string so manually added it using hexdump. Moved to normal java file because Processing had file not found error. Realized loadBytes() was for all general files, and will be moving back into Processing and continuing tests.
 
-### Mon, 5/26
-
-D
-
-### Mon, 5/26
-
-D
-
 
 ## GROUP MEMBER 2: Regina Chen
 
@@ -58,3 +50,8 @@ D
 - starting a backup plan if encoding with frequency in audio files doesn't work
 - start on and finish encoding columnar transposition cipher
 - researching on how to decode columnar transposition cipher using brute force
+
+### Wed, 5/29
+- Encoding string into audio file works
+- unable to hear sound from the encoded audio file but when opened on audacity, the frequency and everything else seem to be working fine
+- might be due to header being manipulated so trying to fix
