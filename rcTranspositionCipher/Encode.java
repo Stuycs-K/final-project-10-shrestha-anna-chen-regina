@@ -32,7 +32,7 @@ public class Encode {
       alphabet++;
     }
 
-    printAry(ary);
+    // printAry(ary);
 
     for (int i=0; i<col; i++) {
       r = 0;
