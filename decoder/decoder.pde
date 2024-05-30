@@ -1,5 +1,6 @@
 import java.lang.Byte;
 import java.lang.String;
+import java.lang.Integer;
 import java.util.*;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
@@ -11,10 +12,11 @@ int MODE = 0;
 
 void setup() {
   size(200, 200);
-  byte[] bytes = loadBytes("Short_Sway.wav");
+  byte[] bytes = loadBytes("H5mb.wav");
+  //System.out.println(Integer.toBinaryString(bytes[0])+" "+Integer.toBinaryString(bytes[1]));
   
   ArrayList<Byte> messageArray = decode(bytes);
-  System.out.println(messageArray.size());
+  //System.out.println(messageArray.size());
   byte[] result = new byte[messageArray.size()-1]; //remove last terminating bit
   for(int i = 0; i < result.length; i++){
     result[i] = messageArray.get(i);
@@ -26,17 +28,9 @@ void setup() {
     String text = new String(result, StandardCharsets.UTF_8);
     System.out.println(text);
   } else if (MODE == 1) {
-    try (FileOutputStream output = new FileOutputStream("decrypted.dat")){
-        output.write(result);
-      }catch (IOException e){
-        e.printStackTrace();
-      }
+    saveBytes("decrypted.dat", result);
   } else {
-    try (FileOutputStream output = new FileOutputStream("decrypted.wav")){
-        output.write(result);
-      }catch (IOException e){
-        e.printStackTrace();
-      }
+    saveBytes("decrypted.wav", result);
   }
 }
 
@@ -44,10 +38,10 @@ ArrayList<Byte> decode(byte[] bytes) {
   ArrayList<Byte> result = new ArrayList<Byte>();
   byte value = 0;
   int n = 0;
-  while (value != (byte)255) { //terminating byte is 00000000 (tentatively)
+  while (value != (byte)255) { //terminating byte is 11111111 (tentatively)
     value = 0;
     for(int i = 0; i < 4; i++){
-      value = (byte)(value*4 + bytes[n*4+i]%4);
+      value = (byte)(value*4 + bytes[n*4+i+44]%4); //ignore 44 byte header
       //println(bytes[n*4+i]%4+"+"+value*4+"="+value);
     }
     result.add(value);
