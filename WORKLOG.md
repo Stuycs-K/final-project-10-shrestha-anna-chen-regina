@@ -6,7 +6,7 @@
 
 Start on outline of project(create branches, processing sketches) and begin researching implementation of audio steganography and file types. Notes/planning document: https://docs.google.com/document/d/1oLgrYbuv7iW_9uCib4jDbt9lGG-MdMGzmmYyTHb14_0/edit.
 
-### Thur, 5/23
+### Thu, 5/23
 
 Do more research on Audacity (how to view frequency) and try to get encoded audio to test decoder. Look through Java's AudioSystem and Processing's Sound library. Outline of decode started, need to research bitrates/byte arrays/spectrograms.
 
@@ -25,6 +25,14 @@ Did more research on lsb audio steganography, attempted to use Python's wav modu
 ### Wed, 5/29
 
 Start testing decode (difficult without encode / terminating string). Steghide didn't have the terminating string so manually added it using hexdump. Moved to normal java file because Processing had file not found error. Realized loadBytes() was for all general files, and will be moving back into Processing and continuing tests.
+
+### Thu, 5/30
+
+Continue testing decode, had to manually create encrypted files since encoder was incomplete and online tools didn't have terminating digits or seemed to be working. However, by the end of class encoder was completed and normal testing can resume. Results were consistent with encrypted messages except the last letter which is missing, and didn't stop at the terminating value because it was not encrypted yet. Will consider creating a similar function for mp3 since it's easier to find mp3 files(header length differs). Also beginning testing on encrypted files(txt, png, wav) especially other audio files. Also looked over encode and tried to find the issue of encrypted audio missing half of the original audio length despite same number of bytes and proper header and tail (likely because of mp3 being lossy, wav files worked).
+
+### Mon, 5/26
+
+D
 
 
 ## GROUP MEMBER 2: Regina Chen
