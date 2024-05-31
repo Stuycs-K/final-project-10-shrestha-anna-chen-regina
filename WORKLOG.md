@@ -67,3 +67,5 @@ D
 ### Thur, 5/30
 - worked on encoding string into mp3 file, works; need to test longer strings
 - worked on encoding png image into mp3 file, encoded but output file have a reduced time duration; it's only part of the original mp3 file
+- tried with wav files, doesn't play anything and can't open audacity at all
+- tried using a differnt way to encode for mp3, better but still corrupted where the message is encoded
