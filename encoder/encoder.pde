@@ -16,18 +16,24 @@ void setup() {
   size(200, 200);
   byte[] bytes = loadBytes("Sway_to_My_Beat_in_Cosmos_instrumental.mp3");
   
+  if (MODE == 0) {
   message = "hello world";
   
   byte[] msgByte = message.getBytes();   
-  System.out.println("String to byte array: " + Arrays.toString(msgByte));
+  //System.out.println("String to byte array: " + Arrays.toString(msgByte));
 
-  byte[] messageArray = encode(bytes, msgByte);
-
+  byte[] messageArray = encodeMsg(bytes, msgByte);
   saveBytes("encrypt.mp3", messageArray);
+  }else if (MODE == 1) {
+    
+  }else if (MODE == 3) {
+    
+  }
+  
 }
 
-byte[] encode(byte[] bytes, byte[] msgByte) {
-  int bi = 4;
+byte[] encodeMsg(byte[] bytes, byte[] msgByte) {
+  int bi = 46;
   for (int i=0; i<msgByte.length; i++) {
     byte msgb = msgByte[i];
 
@@ -45,6 +51,7 @@ byte[] encode(byte[] bytes, byte[] msgByte) {
     bytes[bi] = (byte) ((bytes[bi++] & 0b11111100) | seg4);
     //println("b4: " + bytes[bi-1]);
   }
+  bytes[bi] = (byte)225;
 
   return bytes;
 }
