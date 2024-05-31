@@ -11,7 +11,7 @@ AudioSample audioSample;
 int STRING = 0;
 int IMG = 1;
 int AUDIO = 2;
-int MODE = 0;
+int MODE = 1;
 
 byte[] bytes;
 String message;
@@ -28,10 +28,9 @@ void setup() {
     encodeData(bytes, msgByte);
     saveBytes("encryptMsg.mp3", bytes);
   }else if (MODE == 1) {
-    byte[] fileBytes = loadBytes("cat.png");
     //byte[] array = encode(bytes, fileBytes);
     //saveBytes("encryptFile.mp3", array);
-    encodeData(bytes, fileBytes);
+    byte[] fileBytes = modify(bytes,fileToArray("cat.png"));
     saveBytes("encryptFile.mp3", bytes);
   }else if (MODE == 2) {
     
@@ -49,23 +48,41 @@ void encodeData(byte[] bytes, byte[] msgByte) {
   }
 }
 
-//byte[] encode(byte[] bytes, byte[] msgByte) {
-//  int bi = 46;
-//  for (int i=0; i<msgByte.length; i++) {
-//    byte msgb = msgByte[i];
-
-//    byte seg1 = (byte) ((msgb >> 6) & 0b11);
-//    byte seg2 = (byte) ((msgb >> 4) & 0b11);
-//    byte seg3 = (byte) ((msgb >> 2) & 0b11);
-//    byte seg4 = (byte) (msgb & 0b11);
-
-//    bytes[bi] = (byte) ((bytes[bi++] & 0b11111100) | seg1);
-//    bytes[bi] = (byte) ((bytes[bi++] & 0b11111100) | seg2);
-//    bytes[bi] = (byte) ((bytes[bi++] & 0b11111100) | seg3);
-//    bytes[bi] = (byte) ((bytes[bi++] & 0b11111100) | seg4);
-//  }
-//  //bytes[bi] = (byte)255;
+int[] fileToArray(String s){
+  byte[] file = loadBytes(s);
+  int[] parts = new int[file.length*4];
   
-//  println(msgByte.length*4);
-//  return bytes;
-//}
+  for(int i = 0; i < file.length; i++){
+    //print(file[i]+" ");
+    boolean neg = false;
+    if(file[i]<0){
+      file[i] = (byte)(128+file[i]);
+      neg = true;
+    }
+    for(int j = 1; j <= 4; j++){
+      parts[(i+1)*4-j] = file[i]%4;
+      file[i] = (byte) (file[i]/4);
+      if(j==4&&neg){
+        parts[(i+1)*4-j] = (byte)(parts[(i+1)*4-j]+2);
+      }
+    }
+  }
+  print(parts.length);
+  return parts;
+}
+
+byte[] modify(byte[] audio, int[]messageArray){
+  byte[] ret = new byte[audio.length];
+  for (int i = 0; i < messageArray.length; i++) {
+    //System.out.println(img.pixels[i]);
+    /*if(i<16){
+      println(messageArray[i]%4+"+"+(red(img.pixels[i])/4)*4);
+      println(red(img.pixels[i])+" vs "+(int)(red(img.pixels[i]))/4*4);
+    }*/
+    ret[i] = byte(messageArray[i]%4+(int)(audio[i+4])/4*4);
+    /*if(i<16){
+      println(red(img.pixels[i]));
+    }*/
+  }
+  return ret;
+}
