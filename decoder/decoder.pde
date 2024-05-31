@@ -12,7 +12,7 @@ int MODE = 0;
 
 void setup() {
   size(200, 200);
-  byte[] bytes = loadBytes("encrypt.mp3");
+  byte[] bytes = loadBytes("10_mb_encryptImg.wav");
   //System.out.println(Integer.toBinaryString(bytes[0])+" "+Integer.toBinaryString(bytes[1]));
   
   ArrayList<Byte> messageArray = decode(bytes);
@@ -27,8 +27,6 @@ void setup() {
     //System.out.println(messageArray);
     String text = new String(result, StandardCharsets.UTF_8);
     System.out.println(text);
-  } else if (MODE == 1) {
-    saveBytes("decrypted.dat", result);
   } else {
     saveBytes("decrypted.wav", result);
   }
@@ -38,10 +36,10 @@ ArrayList<Byte> decode(byte[] bytes) {
   ArrayList<Byte> result = new ArrayList<Byte>();
   byte value = 0;
   int n = 0;
-  while (value != (byte)255) { //terminating byte is 11111111 (tentatively)
+  while (value != (byte)243) { //terminating byte is 11111111 (tentatively)
     value = 0;
     for(int i = 0; i < 4; i++){
-      value = (byte)(value*4 + bytes[n*4+i+4]%4); //ignore 44 byte header / 4 for mp3
+      value = (byte)(value*4 + bytes[n*4+i+44]%4); //ignore 44 byte header / 4 for mp3
       //println(bytes[n*4+i]%4+"+"+value*4+"="+value);
     }
     result.add(value);
