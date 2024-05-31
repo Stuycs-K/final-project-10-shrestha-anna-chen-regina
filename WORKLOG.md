@@ -63,3 +63,7 @@ D
 - Encoding string into audio file works
 - unable to hear sound from the encoded audio file but when opened on audacity, the frequency and everything else seem to be working fine
 - might be due to header being manipulated so trying to fix
+
+### Thur, 5/30
+- worked on encoding string into mp3 file, works; need to test longer strings
+- worked on encoding png image into mp3 file, encoded but output file have a reduced time duration; it's only part of the original mp3 file

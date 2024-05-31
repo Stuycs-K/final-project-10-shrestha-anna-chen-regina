@@ -15,17 +15,17 @@ String message;
 
 void setup() {
   size(200, 200);
-  bytes = loadBytes("Sway_to_My_Beat_in_Cosmos_instrumental.mp3");
+  bytes = loadBytes("Sway_to_My_Beat_in_Cosmos_instrumental.wav");
   
   if (MODE == 0) {
     message = "hello world";
     byte[] msgByte = message.getBytes();   
     byte[] messageArray = encode(bytes, msgByte);
-    saveBytes("encryptMsg.mp3", messageArray);
+    saveBytes("encryptMsg.wav", messageArray);
   }else if (MODE == 1) {
     byte[] imgBytes = loadBytes("cat.png");
     byte[] array = encode(bytes, imgBytes);
-    saveBytes("encryptImg.mp3", array);
+    saveBytes("encryptImg.wav", array);
   }else if (MODE == 2) {
     
   }
@@ -49,6 +49,6 @@ byte[] encode(byte[] bytes, byte[] msgByte) {
   }
   //bytes[bi] = (byte)255;
   
-  println(msgByte.length);
+  println(msgByte.length*4);
   return bytes;
 }
