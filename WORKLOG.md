@@ -28,7 +28,7 @@ Start testing decode (difficult without encode / terminating string). Steghide d
 
 ### Thu, 5/30
 
-Continue testing decode, had to manually create encrypted files since encoder was incomplete and online tools didn't have terminating digits or seemed to be working. However, by the end of class encoder was completed and normal testing can resume. Results were consistent with encrypted messages except the last letter which is missing, and didn't stop at the terminating value because it was not encrypted yet. Will consider creating a similar function for mp3 since it's easier to find mp3 files(header length differs). Also beginning testing on encrypted files(txt, png, wav) especially other audio files. Also looked over encode and tried to find the issue of encrypted audio missing half of the original audio length despite same number of bytes and proper header and tail (likely because of mp3 being lossy, wav files worked).
+Continue testing decode, had to manually create encrypted files since encoder was incomplete and online tools didn't have terminating digits or seemed to be working. However, by the end of class encoder was completed and normal testing can resume. Results were consistent with encrypted messages except the last letter which is missing, and didn't stop at the terminating value because it was not encrypted yet. Will consider creating a similar function for mp3 since it's easier to find mp3 files(header length differs). Also beginning testing on encrypted files(txt, png, wav) especially other audio files.
 
 ### Mon, 5/26
 
