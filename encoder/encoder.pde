@@ -8,31 +8,31 @@ import java.nio.file.*;
 int STRING = 0;
 int IMG = 1;
 int AUDIO = 2;
-int MODE = 0;
+int MODE = 1;
 
+byte[] bytes;
 String message;
 
 void setup() {
   size(200, 200);
-  byte[] bytes = loadBytes("Sway_to_My_Beat_in_Cosmos_instrumental.mp3");
+  bytes = loadBytes("Sway_to_My_Beat_in_Cosmos_instrumental.mp3");
   
   if (MODE == 0) {
-  message = "hello world";
-  
-  byte[] msgByte = message.getBytes();   
-  //System.out.println("String to byte array: " + Arrays.toString(msgByte));
-
-  byte[] messageArray = encodeMsg(bytes, msgByte);
-  saveBytes("encrypt.mp3", messageArray);
+    message = "hello world";
+    byte[] msgByte = message.getBytes();   
+    byte[] messageArray = encode(bytes, msgByte);
+    saveBytes("encryptMsg.mp3", messageArray);
   }else if (MODE == 1) {
-    
-  }else if (MODE == 3) {
+    byte[] imgBytes = loadBytes("cat.png");
+    byte[] array = encode(bytes, imgBytes);
+    saveBytes("encryptImg.mp3", array);
+  }else if (MODE == 2) {
     
   }
   
 }
 
-byte[] encodeMsg(byte[] bytes, byte[] msgByte) {
+byte[] encode(byte[] bytes, byte[] msgByte) {
   int bi = 46;
   for (int i=0; i<msgByte.length; i++) {
     byte msgb = msgByte[i];
@@ -43,15 +43,12 @@ byte[] encodeMsg(byte[] bytes, byte[] msgByte) {
     byte seg4 = (byte) (msgb & 0b11);
 
     bytes[bi] = (byte) ((bytes[bi++] & 0b11111100) | seg1);
-    //println("b1: " + bytes[bi-1]);
     bytes[bi] = (byte) ((bytes[bi++] & 0b11111100) | seg2);
-    //println("b2: " + bytes[bi-1]);
     bytes[bi] = (byte) ((bytes[bi++] & 0b11111100) | seg3);
-    //println("b3: " + bytes[bi-1]);
     bytes[bi] = (byte) ((bytes[bi++] & 0b11111100) | seg4);
-    //println("b4: " + bytes[bi-1]);
   }
-  bytes[bi] = (byte)225;
-
+  //bytes[bi] = (byte)255;
+  
+  println(msgByte.length);
   return bytes;
 }
