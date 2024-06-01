@@ -50,6 +50,7 @@ void encodeData(byte[] bytes, byte[] msgByte) {
 
 int[] fileToArray(String s){
   byte[] file = loadBytes(s);
+  print(file.length);
   int[] parts = new int[file.length*4];
   
   for(int i = 0; i < file.length; i++){
@@ -67,22 +68,27 @@ int[] fileToArray(String s){
       }
     }
   }
-  print(parts.length);
   return parts;
 }
 
 byte[] modify(byte[] audio, int[]messageArray){
   byte[] ret = new byte[audio.length];
+  for (int i = 0; i < 4; i++) {
+    ret[i] = audio[i];
+  }
   for (int i = 0; i < messageArray.length; i++) {
     //System.out.println(img.pixels[i]);
     /*if(i<16){
       println(messageArray[i]%4+"+"+(red(img.pixels[i])/4)*4);
       println(red(img.pixels[i])+" vs "+(int)(red(img.pixels[i]))/4*4);
     }*/
-    ret[i] = byte(messageArray[i]%4+(int)(audio[i+4])/4*4);
+    ret[i] = byte(messageArray[i]%4+(int)(audio[i+4]/4)*4);
     /*if(i<16){
       println(red(img.pixels[i]));
     }*/
+  }
+  for (int i = messageArray.length; i < audio.length; i++) {
+    ret[i] = audio[i];
   }
   return ret;
 }
