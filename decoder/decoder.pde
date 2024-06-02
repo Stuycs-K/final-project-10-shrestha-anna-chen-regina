@@ -8,11 +8,11 @@ import java.nio.file.*;
 int STRING = 0;
 int IMG = 1;
 int AUDIO = 2;
-int MODE = STRING;
+int MODE = 1;
 
 void setup() {
   size(200, 200);
-  byte[] bytes = loadBytes("encryptMsg.mp3");
+  byte[] bytes = loadBytes("encryptFile.mp3");
   //encrypt.mp3: hello worl (length 11)
   //System.out.println(Integer.toBinaryString(bytes[0])+" "+Integer.toBinaryString(bytes[1]));
   
@@ -37,7 +37,7 @@ ArrayList<Byte> decode(byte[] bytes) {
   ArrayList<Byte> result = new ArrayList<Byte>();
   byte value = 0;
   
-  int n = 0;
+  /*int n = 0;
   while (value != (byte)255) { //terminating byte is 11111111 (tentatively)
     value = 0;
     for(int i = 0; i < 4; i++){
@@ -46,15 +46,15 @@ ArrayList<Byte> decode(byte[] bytes) {
     }
     result.add(value);
     n++;
-  }
-  /*for(int n = 0; n < 11; n++){
+  }*/
+  for(int n = 0; n < 145875; n++){
     value = 0;
     for(int i = 0; i < 4; i++){
       value = (byte)(value*4 + bytes[n*4+i+4]%4); //ignore 44 byte header / 4 for mp3
       //println(bytes[n*4+i]%4+"+"+value*4+"="+value);
     }
     result.add(value);
-  }*/
+  }
 
   return result;
 }

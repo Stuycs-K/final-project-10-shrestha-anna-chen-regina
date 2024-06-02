@@ -40,6 +40,7 @@ void setup() {
   
 }
 
+<<<<<<< HEAD
 //void encodeData(byte[] bytes, byte[] msgByte) {
 //  for (int i = 0; i < msgByte.length; i++) {
 //    for (int j = 0; j < 8; j++) {
@@ -89,4 +90,59 @@ byte[] encode(byte[] bytes, byte[] msgByte) {
   
   println(msgByte.length*8);
   return bytes;
+=======
+void encodeData(byte[] bytes, byte[] msgByte) {
+  for (int i = 0; i < msgByte.length / 4; i++) {
+    for (int j = 0; j < 8; j++) {
+      int index = i * 8 + j;
+      int bit = (msgByte[i] >> (7 - j)) & 0x01;
+      bytes[index] = (byte)((bytes[index] & 0xFE) | bit);
+    }
+  }
+}
+
+int[] fileToArray(String s){
+  byte[] file = loadBytes(s);
+  print(file.length);
+  int[] parts = new int[file.length*4];
+  
+  for(int i = 0; i < file.length; i++){
+    //print(file[i]+" ");
+    boolean neg = false;
+    if(file[i]<0){
+      file[i] = (byte)(128+file[i]);
+      neg = true;
+    }
+    for(int j = 1; j <= 4; j++){
+      parts[(i+1)*4-j] = file[i]%4;
+      file[i] = (byte) (file[i]/4);
+      if(j==4&&neg){
+        parts[(i+1)*4-j] = (byte)(parts[(i+1)*4-j]+2);
+      }
+    }
+  }
+  return parts;
+}
+
+byte[] modify(byte[] audio, int[]messageArray){
+  byte[] ret = new byte[audio.length];
+  for (int i = 0; i < 4; i++) {
+    ret[i] = audio[i];
+  }
+  for (int i = 0; i < messageArray.length; i++) {
+    //System.out.println(img.pixels[i]);
+    /*if(i<16){
+      println(messageArray[i]%4+"+"+(red(img.pixels[i])/4)*4);
+      println(red(img.pixels[i])+" vs "+(int)(red(img.pixels[i]))/4*4);
+    }*/
+    ret[i] = byte(messageArray[i]%4+(int)(audio[i+4]/4)*4);
+    /*if(i<16){
+      println(red(img.pixels[i]));
+    }*/
+  }
+  for (int i = messageArray.length; i < audio.length; i++) {
+    ret[i] = audio[i];
+  }
+  return ret;
+>>>>>>> anna
 }
