@@ -28,7 +28,11 @@ Start testing decode (difficult without encode / terminating string). Steghide d
 
 ### Thu, 5/30
 
-Continue testing decode, had to manually create encrypted files since encoder was incomplete and online tools didn't have terminating digits or seemed to be working. However, by the end of class encoder was completed and normal testing can resume. Results were consistent with encrypted messages except the last letter which is missing, and didn't stop at the terminating value because it was not encrypted yet. Will consider creating a similar function for mp3 since it's easier to find mp3 files(header length differs). Also beginning testing on encrypted files(txt, png, wav) especially other audio files.
+Continue testing decode, had to manually create encrypted files since encoder was incomplete and online tools didn't have terminating digits or seemed to be working. However, by the end of class encoder was completed and normal testing can resume. Results were consistent with encrypted messages except the last letter which is missing, and didn't stop at the terminating value because it was not encrypted yet. Will consider creating a similar function for mp3 since it's easier to find mp3 files(header length differs). Beginning testing on encrypted files(txt, png, wav) especially other audio files. Also looked over encode and tried to find the issue causing encrypted audio to lose half of its length despite having the same number of bytes and proper header and tail (likely because of mp3 being lossy, wav files worked).
+
+### Fri, 5/31
+
+More testing with encoded files; invalid output despite working with previously encoded files. Encoding issue with mp3 still has not been fixed, attempted to write my own file encoder as well as deal with errors resulting from signed bytes(in my branch, to prevent merge conflicts). Started planning how to use user input to designate audio files and encrypted information using Processing commands and libraries. Also considering making a makefile.
 
 ### Mon, 5/26
 
