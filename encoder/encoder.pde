@@ -40,7 +40,6 @@ void setup() {
   
 }
 
-<<<<<<< HEAD
 //void encodeData(byte[] bytes, byte[] msgByte) {
 //  for (int i = 0; i < msgByte.length; i++) {
 //    for (int j = 0; j < 8; j++) {
@@ -54,52 +53,37 @@ void setup() {
 //}
 
 byte[] encode(byte[] bytes, byte[] msgByte) {
-  int bi = 46;
-  for (int i=0; i<msgByte.length; i++) {
+  int bi = 1024;
+  for (int i = 0; i < msgByte.length; i++) {
     byte msgb = msgByte[i];
-
-    //byte seg1 = (byte) ((msgb >> 6) & 0b11);
-    //byte seg2 = (byte) ((msgb >> 4) & 0b11);
-    //byte seg3 = (byte) ((msgb >> 2) & 0b11);
-    //byte seg4 = (byte) (msgb & 0b11);
-
-    //bytes[bi] = (byte) ((bytes[bi++] & 0b11111100) | seg1);
-    //bytes[bi] = (byte) ((bytes[bi++] & 0b11111100) | seg2);
-    //bytes[bi] = (byte) ((bytes[bi++] & 0b11111100) | seg3);
-    //bytes[bi] = (byte) ((bytes[bi++] & 0b11111100) | seg4);
     
-    byte seg1 = (byte) ((msgb >> 7) & 0b01);
-    byte seg2 = (byte) ((msgb >> 6) & 0b01);
-    byte seg3 = (byte) ((msgb >> 5) & 0b01);
-    byte seg4 = (byte) ((msgb >> 4) & 0b01);
-    byte seg5 = (byte) ((msgb >> 3) & 0b01);
-    byte seg6 = (byte) ((msgb >> 2) & 0b01);
-    byte seg7 = (byte) ((msgb >> 1) & 0b01);
-    byte seg8 = (byte) (msgb & 0b01);
+    //byte seg1 = (byte) (msgb & 0b11110000);
+    //byte seg2 = (byte) (msgb & 0b00001111);
+    
+    //bytes[bi] = (byte) ((bytes[bi] & 0b11110000) | seg1);
+    //bi += 2;
+    //bytes[bi] = (byte) ((bytes[bi] & 0b11110000) | seg2);
+    //bi += 2;
+    
+    byte seg1 = (byte) ((msgb >> 6) & 0b11);
+    byte seg2 = (byte) ((msgb >> 4) & 0b11);
+    byte seg3 = (byte) ((msgb >> 2) & 0b11);
+    byte seg4 = (byte) (msgb & 0b11);
 
-    bytes[bi] = (byte) ((bytes[bi++] & 0b11111110) | seg1);
-    bytes[bi] = (byte) ((bytes[bi++] & 0b11111110) | seg2);
-    bytes[bi] = (byte) ((bytes[bi++] & 0b11111110) | seg3);
-    bytes[bi] = (byte) ((bytes[bi++] & 0b11111110) | seg4);
-    bytes[bi] = (byte) ((bytes[bi++] & 0b11111110) | seg5);
-    bytes[bi] = (byte) ((bytes[bi++] & 0b11111110) | seg6);
-    bytes[bi] = (byte) ((bytes[bi++] & 0b11111110) | seg7);
-    bytes[bi] = (byte) ((bytes[bi++] & 0b11111110) | seg8);
+    bytes[bi] = (byte) ((bytes[bi] & 0b11111100) | seg1);
+    bi += 4;
+    bytes[bi] = (byte) ((bytes[bi] & 0b11111100) | seg2);
+    bi += 4;
+    bytes[bi] = (byte) ((bytes[bi] & 0b11111100) | seg3);
+    bi += 4;
+    bytes[bi] = (byte) ((bytes[bi] & 0b11111100) | seg4);
+    bi += 4;
   }
-  //bytes[bi] = (byte)255;
-  
-  println(msgByte.length*8);
+
+  println(msgByte.length * 16);
   return bytes;
-=======
-void encodeData(byte[] bytes, byte[] msgByte) {
-  for (int i = 0; i < msgByte.length / 4; i++) {
-    for (int j = 0; j < 8; j++) {
-      int index = i * 8 + j;
-      int bit = (msgByte[i] >> (7 - j)) & 0x01;
-      bytes[index] = (byte)((bytes[index] & 0xFE) | bit);
-    }
-  }
 }
+
 
 int[] fileToArray(String s){
   byte[] file = loadBytes(s);
@@ -122,27 +106,4 @@ int[] fileToArray(String s){
     }
   }
   return parts;
-}
-
-byte[] modify(byte[] audio, int[]messageArray){
-  byte[] ret = new byte[audio.length];
-  for (int i = 0; i < 4; i++) {
-    ret[i] = audio[i];
-  }
-  for (int i = 0; i < messageArray.length; i++) {
-    //System.out.println(img.pixels[i]);
-    /*if(i<16){
-      println(messageArray[i]%4+"+"+(red(img.pixels[i])/4)*4);
-      println(red(img.pixels[i])+" vs "+(int)(red(img.pixels[i]))/4*4);
-    }*/
-    ret[i] = byte(messageArray[i]%4+(int)(audio[i+4]/4)*4);
-    /*if(i<16){
-      println(red(img.pixels[i]));
-    }*/
-  }
-  for (int i = messageArray.length; i < audio.length; i++) {
-    ret[i] = audio[i];
-  }
-  return ret;
->>>>>>> anna
 }
