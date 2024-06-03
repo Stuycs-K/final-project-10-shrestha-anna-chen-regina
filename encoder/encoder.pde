@@ -28,17 +28,17 @@ void setup() {
     message = userInput[2];
     byte[] msgByte = message.getBytes(StandardCharsets.UTF_8);   
     byte[] messageArray = encode(bytes, msgByte);
-    saveBytes("encryptMsg.mp3", messageArray);
+    saveBytes("encryptMsg.wav", messageArray);
     println("MODE = 0");
   }else if (MODE == 1) {
     byte[] fileBytes = loadBytes(userInput[2]);
     byte[] array = encode(bytes, fileBytes);
-    saveBytes("encryptFile.mp3", array);
+    saveBytes("encryptFile.wav", array);
     println("MODE = 1");
   }else if (MODE == 2) {
     byte[] fileBytes = loadBytes(userInput[2]);
     byte[] array = encode(bytes, fileBytes);
-    saveBytes("encryptFile.mp3", array);
+    saveBytes("encryptFile.wav", array);
     println("MODE = 2");
   }
   
