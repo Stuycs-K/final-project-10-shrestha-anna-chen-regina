@@ -7,15 +7,17 @@ import java.nio.file.*;
 import processing.sound.*;
 
 int STRING = 0;
-int IMG = 1;
+int FILE = 1;
 int AUDIO = 2;
 int MODE = 1;
 
 byte[] bytes;
 String message;
 
+String input = "";
+
 void setup() {
-  size(200, 200);
+  size(600, 400);
   bytes = loadBytes("Sway_to_My_Beat_in_Cosmos_instrumental.mp3");
   
   
@@ -106,4 +108,43 @@ int[] fileToArray(String s){
     }
   }
   return parts;
+}
+
+void draw() {
+  background(255); 
+  fill(0);
+  text(input, 10, height/2);
+}
+
+void promptUser() {
+  Scanner scanner = new Scanner(System.in);
+
+  // Prompt for mode
+  println("Choose mode: (0) String (1) File");
+  int mode = scanner.nextInt();
+  scanner.nextLine();  // Consume the newline character
+
+  if (mode == 0) {
+    MODE = 0;
+    println("Enter String: ");
+  } else {
+    MODE = 1;
+    println("Enter File Name: ");
+  }
+
+  // Prompt for input
+  input = scanner.nextLine();
+  processInput(input);
+}
+
+void processInput(String input) {
+  if (MODE == 1) {
+    println("File name Entered: " + input);
+  } else if (MODE == 0) {
+    println("String Entered: " + input);
+  }
+}
+
+void keypress() {
+  
 }
