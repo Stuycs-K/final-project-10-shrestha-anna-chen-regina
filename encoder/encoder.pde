@@ -7,8 +7,8 @@ import java.nio.file.*;
 import processing.sound.*;
 
 int STRING = 0;
-int FILE = 1;
-int AUDIO = 2;
+int IMG = 1;
+int FILE = 2;
 int MODE = 1;
 
 byte[] bytes;
@@ -18,8 +18,10 @@ String input = "";
 
 void setup() {
   size(600, 400);
-  bytes = loadBytes("Sway_to_My_Beat_in_Cosmos_instrumental.mp3");
   
+  
+  bytes = loadBytes("Sway_to_My_Beat_in_Cosmos_instrumental.mp3");
+  int MODE = 1;
   
   if (MODE == 0) {
     message = "hello world";
