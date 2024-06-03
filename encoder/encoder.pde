@@ -1,5 +1,6 @@
 import java.lang.Byte;
 import java.lang.String;
+import java.lang.Integer;
 import java.util.*;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
@@ -7,54 +8,41 @@ import java.nio.file.*;
 import processing.sound.*;
 
 int STRING = 0;
-int FILE = 1;
-int AUDIO = 2;
-int MODE = 1;
+int IMG = 1;
+int FILE = 2;
+int MODE;
 
 byte[] bytes;
 String message;
 
-String input = "";
+String[] userInput;
 
 void setup() {
   size(600, 400);
-  
-  
-  bytes = loadBytes("Sway_to_My_Beat_in_Cosmos_instrumental.mp3");
-  int MODE = 1;
+  userInput = loadStrings("userInput.txt");
+  if (userInput.length < 3) println("Invalid Input!!!");
+  bytes = loadBytes(userInput[0]);
+  MODE = Integer.parseInt(userInput[1]);
   
   if (MODE == 0) {
-    message = "hello world";
+    message = userInput[2];
     byte[] msgByte = message.getBytes(StandardCharsets.UTF_8);   
     byte[] messageArray = encode(bytes, msgByte);
-    saveBytes("encryptMsg.mp3", messageArray);
-    
-    //encodeData(bytes, msgByte);
-    //saveBytes("encryptMsg.mp3", bytes);
+    saveBytes("encryptMsg.wav", messageArray);
+    println("MODE = 0");
   }else if (MODE == 1) {
-    byte[] fileBytes = loadBytes("cat.png");
+    byte[] fileBytes = loadBytes(userInput[2]);
     byte[] array = encode(bytes, fileBytes);
-    saveBytes("encryptFile.mp3", array);
-    
-    //encodeData(bytes, fileBytes);
-    //saveBytes("encryptFile.mp3", bytes);
+    saveBytes("encryptFile.wav", array);
+    println("MODE = 1");
   }else if (MODE == 2) {
-    
+    byte[] fileBytes = loadBytes(userInput[2]);
+    byte[] array = encode(bytes, fileBytes);
+    saveBytes("encryptFile.wav", array);
+    println("MODE = 2");
   }
   
 }
-
-//void encodeData(byte[] bytes, byte[] msgByte) {
-//  for (int i = 0; i < msgByte.length; i++) {
-//    for (int j = 0; j < 8; j++) {
-//      int index = i * 8 + j;
-//      int bit = (msgByte[i] >> (7 - j)) & 0x01;
-//      bytes[index] = (byte)((bytes[index] & 0xFE) | bit);
-//    }
-//  }
-  
-//  println(msgByte.length*4);
-//}
 
 byte[] encode(byte[] bytes, byte[] msgByte) {
   int bi = 1024;
@@ -110,43 +98,4 @@ int[] fileToArray(String s){
     }
   }
   return parts;
-}
-
-void draw() {
-  background(255); 
-  fill(0);
-  text(input, 10, height/2);
-}
-
-void promptUser() {
-  Scanner scanner = new Scanner(System.in);
-
-  // Prompt for mode
-  println("Choose mode: (0) String (1) File");
-  int mode = scanner.nextInt();
-  scanner.nextLine();  // Consume the newline character
-
-  if (mode == 0) {
-    MODE = 0;
-    println("Enter String: ");
-  } else {
-    MODE = 1;
-    println("Enter File Name: ");
-  }
-
-  // Prompt for input
-  input = scanner.nextLine();
-  processInput(input);
-}
-
-void processInput(String input) {
-  if (MODE == 1) {
-    println("File name Entered: " + input);
-  } else if (MODE == 0) {
-    println("String Entered: " + input);
-  }
-}
-
-void keypress() {
-  
 }
