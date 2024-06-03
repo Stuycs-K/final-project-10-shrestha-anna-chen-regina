@@ -18,8 +18,10 @@ String input = "";
 
 void setup() {
   size(600, 400);
-  bytes = loadBytes("Sway_to_My_Beat_in_Cosmos_instrumental.mp3");
   
+  
+  bytes = loadBytes("Sway_to_My_Beat_in_Cosmos_instrumental.mp3");
+  int MODE = 1;
   
   if (MODE == 0) {
     message = "hello world";
