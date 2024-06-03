@@ -6,8 +6,8 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 int STRING = 0;
 int IMG = 1;
-int AUDIO = 2;
-int MODE = 1;
+int FILE = 2;
+int MODE = 2;
 
 void setup() {
   size(200, 200);
