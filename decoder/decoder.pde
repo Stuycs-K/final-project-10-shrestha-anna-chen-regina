@@ -12,7 +12,7 @@ int MODE = 1;
 
 void setup() {
   size(200, 200);
-  byte[] bytes = loadBytes("encryptFile.mp3");
+  byte[] bytes = loadBytes("encryptFile0.wav");
   //encrypt.mp3: hello worl (length 11)
   //System.out.println(Integer.toBinaryString(bytes[0])+" "+Integer.toBinaryString(bytes[1]));
   

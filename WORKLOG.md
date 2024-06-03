@@ -34,10 +34,13 @@ Continue testing decode, had to manually create encrypted files since encoder wa
 
 More testing with encoded files; invalid output despite working with previously encoded files. Encoding issue with mp3 still has not been fixed, attempted to write my own file encoder as well as deal with errors resulting from signed bytes(in my branch, to prevent merge conflicts). Started planning how to use user input to designate audio files and encrypted information using Processing commands and libraries. Also considering making a makefile.
 
-### Mon, 5/26
+### Sun, 6/2
+
+More testing with encode/decode. File encode doesn't seem to be working properly(byte results including header is wrong when decoded). I tested my version of encode to see if the issue could be fixed, but maybe it's an issue with decode. Did more testing on smaller pictures and other files formats(txt, wav).
+
+### Mon, 6/3
 
 D
-
 
 ## GROUP MEMBER 2: Regina Chen
 
