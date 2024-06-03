@@ -12,13 +12,12 @@ int MODE = 1;
 
 void setup() {
   size(200, 200);
-  byte[] bytes = loadBytes("encryptFile.mp3");
-  //encrypt.mp3: hello worl (length 11)
+  byte[] bytes = loadBytes("encryptFile.wav");
   //System.out.println(Integer.toBinaryString(bytes[0])+" "+Integer.toBinaryString(bytes[1]));
   
   ArrayList<Byte> messageArray = decode(bytes);
   //System.out.println(messageArray.size());
-  byte[] result = new byte[messageArray.size()]; //remove last terminating bit
+  byte[] result = new byte[messageArray.size()];
   for(int i = 0; i < result.length; i++){
     result[i] = messageArray.get(i);
   }
@@ -29,7 +28,7 @@ void setup() {
     String text = new String(result, StandardCharsets.UTF_8);
     System.out.println(text);
   } else {
-    saveBytes("decrypted.dat", result);
+    saveBytes("decrypted.png", result);
   }
 }
 
@@ -37,20 +36,10 @@ ArrayList<Byte> decode(byte[] bytes) {
   ArrayList<Byte> result = new ArrayList<Byte>();
   byte value = 0;
   
-  /*int n = 0;
-  while (value != (byte)255) { //terminating byte is 11111111 (tentatively)
+  for(int n = 0; n < 583500; n++){
     value = 0;
     for(int i = 0; i < 4; i++){
-      value = (byte)(value*4 + bytes[n*4+i+44]%4); //ignore 44 byte header / 4 for mp3
-      //println(bytes[n*4+i]%4+"+"+value*4+"="+value);
-    }
-    result.add(value);
-    n++;
-  }*/
-  for(int n = 0; n < 145875; n++){
-    value = 0;
-    for(int i = 0; i < 4; i++){
-      value = (byte)(value*4 + bytes[n*4+4*i+1024]%4); //ignore 44 byte header / 4 for mp3
+      value = (byte)(value*4 + bytes[n*4+i+1024]%4); //ignores byte header
       //println(bytes[n*4+i]%4+"+"+value*4+"="+value);
     }
     result.add(value);
