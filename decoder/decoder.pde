@@ -50,7 +50,7 @@ ArrayList<Byte> decode(byte[] bytes) {
   for(int n = 0; n < 145875; n++){
     value = 0;
     for(int i = 0; i < 4; i++){
-      value = (byte)(value*4 + bytes[n*4+i+4]%4); //ignore 44 byte header / 4 for mp3
+      value = (byte)(value*4 + bytes[n*4+4*i+1024]%4); //ignore 44 byte header / 4 for mp3
       //println(bytes[n*4+i]%4+"+"+value*4+"="+value);
     }
     result.add(value);
