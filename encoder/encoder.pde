@@ -51,6 +51,7 @@ byte[] encode(byte[] bytes, byte[] msgByte) {
   int bi = 1024;
   for (int i = 0; i < msgByte.length; i++) {
     byte msgb = msgByte[i];
+    println(msgb);
     
     byte seg1 = (byte) ((msgb >> 6) & 0b11);
     byte seg2 = (byte) ((msgb >> 4) & 0b11);
@@ -69,28 +70,4 @@ byte[] encode(byte[] bytes, byte[] msgByte) {
 
   println(msgByte.length * 8);
   return bytes;
-}
-
-
-int[] fileToArray(String s){
-  byte[] file = loadBytes(s);
-  print(file.length);
-  int[] parts = new int[file.length*4];
-  
-  for(int i = 0; i < file.length; i++){
-    //print(file[i]+" ");
-    boolean neg = false;
-    if(file[i]<0){
-      file[i] = (byte)(128+file[i]);
-      neg = true;
-    }
-    for(int j = 1; j <= 4; j++){
-      parts[(i+1)*4-j] = file[i]%4;
-      file[i] = (byte) (file[i]/4);
-      if(j==4&&neg){
-        parts[(i+1)*4-j] = (byte)(parts[(i+1)*4-j]+2);
-      }
-    }
-  }
-  return parts;
 }
