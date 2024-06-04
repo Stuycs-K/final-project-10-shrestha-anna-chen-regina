@@ -66,7 +66,7 @@ byte[] encode(byte[] bytes, byte[] msgByte) {
   int bi = 1024;
   for (int i = 0; i < msgByte.length; i++) {
     byte msgb = msgByte[i];
-    println(msgb);
+    //println(msgb);
     
     byte seg1 = (byte) ((msgb >> 6) & 0b11);
     byte seg2 = (byte) ((msgb >> 4) & 0b11);
