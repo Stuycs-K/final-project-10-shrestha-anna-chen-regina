@@ -23,6 +23,9 @@ void setup() {
   if (userInput.length < 3) println("Invalid Input!!!");
   else {
     bytes = loadBytes(userInput[0]);
+    for(int n = 0; n < 20; n++){
+      print((int)bytes[n]+" ");
+    }
     println(userInput[0]);
     MODE = Integer.parseInt(userInput[1]);
     
@@ -41,6 +44,15 @@ void setup() {
       println("2");
       byte[] fileBytes = loadBytes(userInput[2]);
       byte[] array = encode(bytes, fileBytes);
+      /*println(" ");
+      for(int n = 0; n < 20; n++){
+        print((int)array[n]+" ");
+      }
+      println(" ");
+      array = fileToArray(fileBytes,loadBytes(userInput[0]));
+      for(int n = 0; n < 20; n++){
+        print((int)array[n]+" ");
+      }*/
       saveBytes("encryptFile.wav", array);
     }
   }
@@ -67,30 +79,33 @@ byte[] encode(byte[] bytes, byte[] msgByte) {
     bi += 2;
   }
 
-  println(msgByte.length * 8);
+  println(msgByte.length);
   return bytes;
 }
 
 
-int[] fileToArray(String s){
-  byte[] file = loadBytes(s);
-  print(file.length);
-  int[] parts = new int[file.length*4];
+byte[] fileToArray(byte[] input, byte[] audio){
+  println(input.length);
+  byte[] holder = new byte[input.length*4];
   
-  for(int i = 0; i < file.length; i++){
+  for(int i = 0; i < input.length/4; i++){
     //print(file[i]+" ");
     boolean neg = false;
-    if(file[i]<0){
-      file[i] = (byte)(128+file[i]);
+    if(input[i]<0){
+      input[i] = (byte)(128+input[i]);
       neg = true;
     }
     for(int j = 1; j <= 4; j++){
-      parts[(i+1)*4-j] = file[i]%4;
-      file[i] = (byte) (file[i]/4);
+      holder[(i+1)*4-j+1024] = (byte)(input[i]%4);
+      input[i] = (byte)(input[i]/4);
       if(j==4&&neg){
-        parts[(i+1)*4-j] = (byte)(parts[(i+1)*4-j]+2);
+        holder[(i+1)*4-j+1024] = (byte)(holder[(i+1)*4-j+1024]+2);
       }
     }
   }
-  return parts;
+  //print(holder.length+" "+audio.length);
+  for(int i = 0; i < holder.length; i++){
+    audio[2*i+1024] = (byte)(holder[i]+audio[2*i+1024]%4);
+  }
+  return audio;
 }
