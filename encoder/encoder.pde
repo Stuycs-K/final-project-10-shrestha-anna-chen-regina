@@ -58,13 +58,13 @@ byte[] encode(byte[] bytes, byte[] msgByte) {
     byte seg4 = (byte) (msgb & 0b11);
 
     bytes[bi] = (byte) ((bytes[bi] & 0b11111100) | seg1);
-    bi += 1;
+    bi += 2;
     bytes[bi] = (byte) ((bytes[bi] & 0b11111100) | seg2);
-    bi += 1;
+    bi += 2;
     bytes[bi] = (byte) ((bytes[bi] & 0b11111100) | seg3);
-    bi += 1;
+    bi += 2;
     bytes[bi] = (byte) ((bytes[bi] & 0b11111100) | seg4);
-    bi += 1;
+    bi += 2;
   }
 
   println(msgByte.length * 16);
