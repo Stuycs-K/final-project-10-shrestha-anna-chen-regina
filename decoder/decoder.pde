@@ -48,16 +48,16 @@ byte[] decode(byte[] bytes, int count) {
   byte[] result = new byte[count];
   
   for(int n = 0; n < count; n++){
-    byte value = 0;
-    for(int i = 0; i < 4; i++){
-      value = (byte)(value*4 + bytes[n*8+2*i+1024]%4); //ignores byte header
-      //println(bytes[n*4+i]%4+"+"+value*4+"="+value);
+    byte value = bytes[n*8+1024];
+    for(int i = 1; i < 4; i++){
+      value = (byte)(value*4 + bytes[n*8+2*i+1024]%4); //+1024 ignores file headers
+      //println(bytes[n*8+2*i+1024]%4+"+"+value*4+"="+value);
     }
     result[n] = value;
-    if(n < 20){
+    /*if(n < 20){
       print((int)result[n]+" ");
-    }
+    }*/
   }
-
+  //println(" ");
   return result;
 }

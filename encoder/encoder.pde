@@ -23,9 +23,6 @@ void setup() {
   if (userInput.length < 3) println("Invalid Input!!!");
   else {
     bytes = loadBytes(userInput[0]);
-    for(int n = 0; n < 20; n++){
-      print((int)bytes[n]+" ");
-    }
     println(userInput[0]);
     MODE = Integer.parseInt(userInput[1]);
     
@@ -38,19 +35,25 @@ void setup() {
     }else if (MODE == 1) {
       println("1");
       byte[] fileBytes = loadBytes(userInput[2]);
+      /*for(int n = 0; n < 20; n++){
+        print((int)fileBytes[n]+" ");
+      }*/
       byte[] array = encode(bytes, fileBytes);
       saveBytes("encryptImg.wav", array);
     }else if (MODE == 2) {
       println("2");
       byte[] fileBytes = loadBytes(userInput[2]);
+      /*for(int n = 0; n < 20; n++){
+        print((int)fileBytes[n]+" ");
+      }*/
       byte[] array = encode(bytes, fileBytes);
-      /*println(" ");
+      println(" ");
       for(int n = 0; n < 20; n++){
         print((int)array[n]+" ");
       }
       println(" ");
-      array = fileToArray(fileBytes,loadBytes(userInput[0]));
-      for(int n = 0; n < 20; n++){
+      //array = fileToArray(fileBytes,loadBytes(userInput[0]));
+      /*for(int n = 0; n < 20; n++){
         print((int)array[n]+" ");
       }*/
       saveBytes("encryptFile.wav", array);
