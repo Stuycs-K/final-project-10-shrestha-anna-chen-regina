@@ -16,7 +16,18 @@ void setup() {
     print("Invalid input format!");
   }else{
     println(input[0]);
-    println(input[1]);
+    String mode = input[1];
+    println(mode);
+    if(mode.equals("STRING")){
+      MODE = STRING;
+    }else if(mode.equals("IMG")){
+      MODE = IMG;
+    }else if(mode.equals("MODE")){
+      MODE = FILE;
+    }else{
+      println("Invalid mode: "+mode);
+    }
+    
     byte[] bytes = loadBytes(input[0]);
     MODE = Integer.parseInt(input[1]);
     int count = Integer.parseInt(input[2]);

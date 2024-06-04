@@ -23,25 +23,34 @@ void setup() {
   if (userInput.length < 3) println("Invalid Input!!!");
   else {
     bytes = loadBytes(userInput[0]);
+    String mode = userInput[1];
     println(userInput[0]);
-    MODE = Integer.parseInt(userInput[1]);
+    if(mode.equals("STRING")){
+      MODE = STRING;
+    }else if(mode.equals("IMG")){
+      MODE = IMG;
+    }else if(mode.equals("MODE")){
+      MODE = FILE;
+    }else{
+      println("Invalid Mode!!!");
+    }
     
-    if (MODE == 0) {
-      println("0");
+    if (MODE == STRING) {
+      println("STRING");
       message = userInput[2];
       byte[] msgByte = message.getBytes(StandardCharsets.UTF_8);   
       byte[] messageArray = encode(bytes, msgByte);
       saveBytes("encryptMsg.wav", messageArray);
-    }else if (MODE == 1) {
-      println("1");
+    }else if (MODE == IMG) {
+      println("IMG");
       byte[] fileBytes = loadBytes(userInput[2]);
       /*for(int n = 0; n < 20; n++){
         print((int)fileBytes[n]+" ");
       }*/
       byte[] array = encode(bytes, fileBytes);
       saveBytes("encryptImg.wav", array);
-    }else if (MODE == 2) {
-      println("2");
+    }else if (MODE == FILE) {
+      println("FILE");
       byte[] fileBytes = loadBytes(userInput[2]);
       /*for(int n = 0; n < 20; n++){
         print((int)fileBytes[n]+" ");
