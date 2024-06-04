@@ -65,16 +65,17 @@ byte[] decode(byte[] bytes, int count) {
 byte[] decode2(byte[] bytes, int count){
   byte[] holder = new byte[count];
   for (int i = 0; i < count; i++) {
-    byte value = bytes[1024+8*i];
+    byte value = (byte) 0;
 
     for(int n = 0; n < 4; n++){
-      value += (byte) ((bytes[1024+2*n+8*i] & 0b11) << 2*n);
+      value += (byte) ((bytes[1024+2*n+8*i] & 0b11) << 2*(3-n));
     }
     
     holder[i] = value;
-    if(i < 20){
+    /*if(i < 20){
       print((int)holder[i]+" ");
-    }
+    }*/
   }
+  //println(" ");
   return holder;
 }
