@@ -66,6 +66,7 @@ byte[] encode(byte[] bytes, byte[] msgByte) {
   int bi = 1024;
   for (int i = 0; i < msgByte.length; i++) {
     byte msgb = msgByte[i];
+    println(msgb);
     
     byte seg1 = (byte) ((msgb >> 6) & 0b11);
     byte seg2 = (byte) ((msgb >> 4) & 0b11);
@@ -84,31 +85,4 @@ byte[] encode(byte[] bytes, byte[] msgByte) {
 
   println(msgByte.length);
   return bytes;
-}
-
-
-byte[] fileToArray(byte[] input, byte[] audio){
-  println(input.length);
-  byte[] holder = new byte[input.length*4];
-  
-  for(int i = 0; i < input.length/4; i++){
-    //print(file[i]+" ");
-    boolean neg = false;
-    if(input[i]<0){
-      input[i] = (byte)(128+input[i]);
-      neg = true;
-    }
-    for(int j = 1; j <= 4; j++){
-      holder[(i+1)*4-j+1024] = (byte)(input[i]%4);
-      input[i] = (byte)(input[i]/4);
-      if(j==4&&neg){
-        holder[(i+1)*4-j+1024] = (byte)(holder[(i+1)*4-j+1024]+2);
-      }
-    }
-  }
-  //print(holder.length+" "+audio.length);
-  for(int i = 0; i < holder.length; i++){
-    audio[2*i+1024] = (byte)(holder[i]+audio[2*i+1024]%4);
-  }
-  return audio;
 }
