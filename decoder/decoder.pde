@@ -25,7 +25,7 @@ void setup() {
     }
     println(" ");*/
     
-    byte[] result = decode(bytes,count);
+    byte[] result = decode2(bytes,count);
     //System.out.println(result.length);
     
     //decode
@@ -60,4 +60,21 @@ byte[] decode(byte[] bytes, int count) {
   }
   //println(" ");
   return result;
+}
+
+byte[] decode2(byte[] bytes, int count){
+  byte[] holder = new byte[count];
+  for (int i = 0; i < count; i++) {
+    byte value = bytes[1024+8*i];
+
+    for(int n = 0; n < 4; n++){
+      value += (byte) ((bytes[1024+2*n+8*i] & 0b11) << 2*n);
+    }
+    
+    holder[i] = value;
+    if(i < 20){
+      print((int)holder[i]+" ");
+    }
+  }
+  return holder;
 }
