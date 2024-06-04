@@ -47,11 +47,11 @@ void setup() {
         print((int)fileBytes[n]+" ");
       }*/
       byte[] array = encode(bytes, fileBytes);
-      println(" ");
+      /*println(" ");
       for(int n = 0; n < 20; n++){
         print((int)array[n]+" ");
       }
-      println(" ");
+      println(" ");*/
       //array = fileToArray(fileBytes,loadBytes(userInput[0]));
       /*for(int n = 0; n < 20; n++){
         print((int)array[n]+" ");
