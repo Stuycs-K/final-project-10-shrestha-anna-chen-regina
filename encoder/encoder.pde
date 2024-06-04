@@ -35,12 +35,27 @@ void setup() {
     }else if (MODE == 1) {
       println("1");
       byte[] fileBytes = loadBytes(userInput[2]);
+      /*for(int n = 0; n < 20; n++){
+        print((int)fileBytes[n]+" ");
+      }*/
       byte[] array = encode(bytes, fileBytes);
       saveBytes("encryptImg.wav", array);
     }else if (MODE == 2) {
       println("2");
       byte[] fileBytes = loadBytes(userInput[2]);
+      /*for(int n = 0; n < 20; n++){
+        print((int)fileBytes[n]+" ");
+      }*/
       byte[] array = encode(bytes, fileBytes);
+      /*println(" ");
+      for(int n = 0; n < 20; n++){
+        print((int)array[n]+" ");
+      }
+      println(" ");*/
+      //array = fileToArray(fileBytes,loadBytes(userInput[0]));
+      /*for(int n = 0; n < 20; n++){
+        print((int)array[n]+" ");
+      }*/
       saveBytes("encryptFile.wav", array);
     }
   }
@@ -68,6 +83,6 @@ byte[] encode(byte[] bytes, byte[] msgByte) {
     bi += 2;
   }
 
-  println(msgByte.length * 8);
+  println(msgByte.length);
   return bytes;
 }

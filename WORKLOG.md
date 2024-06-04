@@ -36,7 +36,7 @@ More testing with encoded files; invalid output despite working with previously 
 
 ### Mon, 5/26
 
-D
+Add user input controls and do more testing to match revised encoder(to fix white noise from byte encoding). Add more pictures to test, as well as text files and wav files.
 
 
 ## GROUP MEMBER 2: Regina Chen
