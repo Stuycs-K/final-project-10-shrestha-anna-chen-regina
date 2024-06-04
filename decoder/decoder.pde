@@ -29,7 +29,6 @@ void setup() {
     }
     
     byte[] bytes = loadBytes(input[0]);
-    MODE = Integer.parseInt(input[1]);
     int count = Integer.parseInt(input[2]);
     /*for(int n = 0; n < 20; n++){
       print((int)bytes[n]+" ");
