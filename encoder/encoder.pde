@@ -27,21 +27,21 @@ void setup() {
     MODE = Integer.parseInt(userInput[1]);
     
     if (MODE == 0) {
+      println("0");
       message = userInput[2];
       byte[] msgByte = message.getBytes(StandardCharsets.UTF_8);   
       byte[] messageArray = encode(bytes, msgByte);
       saveBytes("encryptMsg.wav", messageArray);
-      println("MODE = 0");
     }else if (MODE == 1) {
+      println("1");
       byte[] fileBytes = loadBytes(userInput[2]);
       byte[] array = encode(bytes, fileBytes);
-      saveBytes("encryptFile.wav", array);
-      println("MODE = 1");
+      saveBytes("encryptImg.wav", array);
     }else if (MODE == 2) {
+      println("2");
       byte[] fileBytes = loadBytes(userInput[2]);
       byte[] array = encode(bytes, fileBytes);
       saveBytes("encryptFile.wav", array);
-      println("MODE = 2");
     }
   }
   
@@ -67,7 +67,7 @@ byte[] encode(byte[] bytes, byte[] msgByte) {
     bi += 2;
   }
 
-  println(msgByte.length * 16);
+  println(msgByte.length * 8);
   return bytes;
 }
 
