@@ -87,3 +87,10 @@ Trying to continue testing, decode worked initially but fails after a certain po
 - instead of changing the last two bit for every byte, do it for every four byte
 - solved the problem for time duration cutoff but now the encrypted audio file has a lot of noise in places where hidden file is embedded
 - start working on user input so that people can actually use it and for the purpose of not showing code
+
+### Mon, 6/3 to Tue, 6/4
+- add user input control to encode
+- change mp3 file to wav file, works better
+- change interval of bytes to two (have to be even number) so that it doesn't make weird noises in the background
+- testing with hidding image and txt files into different wav files, all works
+- working on readme and presentation md
