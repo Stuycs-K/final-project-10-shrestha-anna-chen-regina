@@ -37,13 +37,13 @@ void setup() {
     println(" ");*/
     
     
-    ArrayList<Byte> holder = decode(bytes);
-    byte[] result = new byte[holder.size()-1];
-    //byte[] result = decode2(bytes,count);
+    //ArrayList<Byte> holder = decode2(bytes);
+   // byte[] result = new byte[holder.size()-1];
+    byte[] result = decode(bytes,count);
     //System.out.println(result.length);
-    for(int i = 0; i < holder.size()-1; i++){
+    /*for(int i = 0; i < holder.size()-1; i++){
       result[i] = holder.get(i);
-    }
+    }*/
     
     //decode
     if (MODE == 0) {
@@ -61,7 +61,7 @@ void setup() {
   }
 }
 
-ArrayList<Byte> decode(byte[] bytes) {
+ArrayList<Byte> decode2(byte[] bytes) {
   ArrayList<Byte> holder = new ArrayList<Byte>();
   int i = 0;
   byte value = (byte) 0;
@@ -82,7 +82,7 @@ ArrayList<Byte> decode(byte[] bytes) {
   return holder;
 }
 
-byte[] decode2(byte[] bytes, int count){
+byte[] decode(byte[] bytes, int count){
   byte[] holder = new byte[count];
   for (int i = 0; i < count; i++) {
     byte value = (byte) 0;

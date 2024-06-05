@@ -24,7 +24,7 @@ void setup() {
   else {
     bytes = loadBytes(userInput[0]);
     String mode = userInput[1];
-    println(userInput[0]);
+    //println(userInput[0]);
     if(mode.equals("STRING")){
       MODE = STRING;
     }else if(mode.equals("IMG")){
@@ -36,17 +36,20 @@ void setup() {
     }
     
     if (MODE == STRING) {
+      println("encryptMsg.wav");
       println("STRING");
       message = userInput[2];
       byte[] msgByte = message.getBytes(StandardCharsets.UTF_8);   
       byte[] messageArray = encode(bytes, msgByte);
       saveBytes("encryptMsg.wav", messageArray);
     }else if (MODE == IMG) {
+      println("encryptImg.wav");
       println("IMG");
       byte[] fileBytes = loadBytes(userInput[2]);
       byte[] array = encode(bytes, fileBytes);
       saveBytes("encryptImg.wav", array);
     }else if (MODE == FILE) {
+      println("encryptFile.wav");
       println("FILE");
       byte[] fileBytes = loadBytes(userInput[2]);
       byte[] array = encode(bytes, fileBytes);
