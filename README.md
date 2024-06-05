@@ -9,7 +9,7 @@ Group Members: Regina Chen, Anna Shrestha
 
 ## Instructions
 
-#### Precondition: Audio file have to be a wav file
+#### ***Precondition: Audio file have to be a wav file***
 
 ### To encode into Audio file
 1. Go into directory 'encoder/data/'
