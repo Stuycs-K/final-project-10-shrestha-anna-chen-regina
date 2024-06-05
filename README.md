@@ -23,8 +23,8 @@ Our program uses least-significant bit(LSB) encoding to hide and decode hidden m
 ### To decode an audio file
 1. Open *decoder/data/userinput.txt* and enter the following information to setup up the decoder, where each bullet is a new line:
   - name of the encrypted wav file
-  - format of encrypted information: STRING (message), IMG (image), or FILE (other file types including .wav or .txt)
+  - format of encrypted information that you want to extract: STRING (message), IMG (image), or FILE (other file types including .wav or .txt)
   - the number of bytes of the encrypted file
-  If you used the encoder to encrypt the message, you can simply copy the printed output.
-4. Save and close the file.
+***If you used the encoder to encrypt the message, you can simply copy over the printed output from the encoder into the userInput.txt of the decoder.***
+4. Save and close the file
 5. Run the command 'processing-java --sketch=/path/to/sketch_folder --run' in terminal (Note: put the full path to the sketch folder starting from Users for Mac users)
