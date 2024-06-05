@@ -29,7 +29,7 @@ void setup() {
       MODE = STRING;
     }else if(mode.equals("IMG")){
       MODE = IMG;
-    }else if(mode.equals("MODE")){
+    }else if(mode.equals("FILE")){
       MODE = FILE;
     }else{
       println("Invalid Mode!!!");
@@ -44,27 +44,12 @@ void setup() {
     }else if (MODE == IMG) {
       println("IMG");
       byte[] fileBytes = loadBytes(userInput[2]);
-      /*for(int n = 0; n < 20; n++){
-        print((int)fileBytes[n]+" ");
-      }*/
       byte[] array = encode(bytes, fileBytes);
       saveBytes("encryptImg.wav", array);
     }else if (MODE == FILE) {
       println("FILE");
       byte[] fileBytes = loadBytes(userInput[2]);
-      /*for(int n = 0; n < 20; n++){
-        print((int)fileBytes[n]+" ");
-      }*/
       byte[] array = encode(bytes, fileBytes);
-      /*println(" ");
-      for(int n = 0; n < 20; n++){
-        print((int)array[n]+" ");
-      }
-      println(" ");*/
-      //array = fileToArray(fileBytes,loadBytes(userInput[0]));
-      /*for(int n = 0; n < 20; n++){
-        print((int)array[n]+" ");
-      }*/
       saveBytes("encryptFile.wav", array);
     }
   }
