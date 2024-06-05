@@ -42,10 +42,21 @@ Add user input controls and do more testing to match revised encoder(to fix whit
 
 Trying to continue testing, decode worked initially but fails after a certain point...Checked encode with my own version, but decoded output remains the same. Then, I tried creating another decode following Regina's version, but it didn't work either. More tests need to be done to find out why it works initially. 2nd version of decode now works, checked with images, text, strings, and later wav files. Also changed input modes from numbers to strings for greater user convenience. Note that printed output of encode/decode can be used to reverse the process if entered as input for the other.
 
-### Mon, 5/26
+### Wed, 6/5
+
+Start working on README: adding onto and revising what Regina wrote, working on the decode instructions and overview.
+
+### Mon, 6/5
 
 -
 
+### Mon, 6/5
+
+-
+
+### Mon, 6/5
+
+-
 
 ## GROUP MEMBER 2: Regina Chen
 
