@@ -1,5 +1,6 @@
 import java.lang.Byte;
 import java.lang.String;
+import java.lang.Integer;
 import java.util.*;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
@@ -8,36 +9,52 @@ import processing.sound.*;
 
 int STRING = 0;
 int IMG = 1;
-int AUDIO = 2;
-int MODE = 1;
+int FILE = 2;
+int MODE;
 
 byte[] bytes;
 String message;
 
+String[] userInput;
+
 void setup() {
-  size(200, 200);
-  bytes = loadBytes("sample1.wav");
-  
-  
-  if (MODE == 0) {
-    message = "hello world";
-    byte[] msgByte = message.getBytes(StandardCharsets.UTF_8);   
-    byte[] messageArray = encode(bytes, msgByte);
-    saveBytes("encryptMsg.mp3", messageArray);
+  userInput = loadStrings("userInput.txt");
+  if (userInput.length < 3) println("Invalid Input!!!");
+  else {
+    bytes = loadBytes(userInput[0]);
+    String mode = userInput[1];
+    println(userInput[0]);
+    if(mode.equals("STRING")){
+      MODE = STRING;
+    }else if(mode.equals("IMG")){
+      MODE = IMG;
+    }else if(mode.equals("FILE")){
+      MODE = FILE;
+    }else{
+      println("Invalid Mode!!!");
+    }
     
-    //encodeData(bytes, msgByte);
-    //saveBytes("encryptMsg.mp3", bytes);
-  }else if (MODE == 1) {
-    //byte[] array = encode(bytes, fileBytes);
-    //encodeData(bytes, loadBytes("cat.png"));
-    //saveBytes("encryptFile0.wav", bytes);
-    byte[] fileBytes = modify(bytes,fileToArray("cat.png"));
-    saveBytes("encryptFile.wav", bytes);
-  }else if (MODE == 2) {
-    
+    if (MODE == STRING) {
+      println("STRING");
+      message = userInput[2];
+      byte[] msgByte = message.getBytes(StandardCharsets.UTF_8);   
+      byte[] messageArray = encode(bytes, msgByte);
+      saveBytes("encryptMsg.wav", messageArray);
+    }else if (MODE == IMG) {
+      println("IMG");
+      byte[] fileBytes = loadBytes(userInput[2]);
+      byte[] array = encode(bytes, fileBytes);
+      saveBytes("encryptImg.wav", array);
+    }else if (MODE == FILE) {
+      println("FILE");
+      byte[] fileBytes = loadBytes(userInput[2]);
+      byte[] array = encode(bytes, fileBytes);
+      saveBytes("encryptFile.wav", array);
+    }
   }
   
 }
+
 
 //void encodeData(byte[] bytes, byte[] msgByte) {
 //  for (int i = 0; i < msgByte.length; i++) {
@@ -55,14 +72,6 @@ byte[] encode(byte[] bytes, byte[] msgByte) {
   int bi = 1024;
   for (int i = 0; i < msgByte.length; i++) {
     byte msgb = msgByte[i];
-    
-    //byte seg1 = (byte) (msgb & 0b11110000);
-    //byte seg2 = (byte) (msgb & 0b00001111);
-    
-    //bytes[bi] = (byte) ((bytes[bi] & 0b11110000) | seg1);
-    //bi += 2;
-    //bytes[bi] = (byte) ((bytes[bi] & 0b11110000) | seg2);
-    //bi += 2;
     
     byte seg1 = (byte) ((msgb >> 6) & 0b11);
     byte seg2 = (byte) ((msgb >> 4) & 0b11);
@@ -104,27 +113,7 @@ int[] fileToArray(String s){
       }
     }
   }
-  return parts;
-}
 
-byte[] modify(byte[] audio, int[]messageArray){
-  byte[] ret = new byte[audio.length];
-  for (int i = 0; i < 4; i++) {
-    ret[i] = audio[i];
-  }
-  for (int i = 0; i < messageArray.length; i++) {
-    //System.out.println(img.pixels[i]);
-    /*if(i<16){
-      println(messageArray[i]%4+"+"+(red(img.pixels[i])/4)*4);
-      println(red(img.pixels[i])+" vs "+(int)(red(img.pixels[i]))/4*4);
-    }*/
-    ret[i] = byte(messageArray[i]%4+(int)(audio[i+4]/4)*4);
-    /*if(i<16){
-      println(red(img.pixels[i]));
-    }*/
-  }
-  for (int i = messageArray.length; i < audio.length; i++) {
-    ret[i] = audio[i];
-  }
-  return ret;
+  println(msgByte.length);
+  return bytes;
 }

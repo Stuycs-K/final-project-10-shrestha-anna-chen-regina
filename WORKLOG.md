@@ -40,7 +40,7 @@ More testing with encode/decode. File encode doesn't seem to be working properly
 
 ### Mon, 6/3
 
-D
+Add user input controls and do more testing to match revised encoder(to fix white noise from byte encoding). Add more pictures to test, as well as text files and wav files.
 
 ## GROUP MEMBER 2: Regina Chen
 
@@ -56,7 +56,7 @@ D
 - trying out frames and channels to manipulate the ultrasound range for embedding another audio file
 - playing around with audacity
 
-### Fri, 5/24 to Mon 5/27
+### Fri, 5/24 to Mon, 5/27
 - looking through AudioInputStream and  Fast Fourier Transform
 - tried using java but AudioInputStream gives error of "UnsupportedAudioFileException: File of unsupported format"
 - trying to encode string to audio file using lsb but didn't find function to write the manipulated sample back to audio buffer
@@ -76,3 +76,16 @@ D
 - worked on encoding png image into mp3 file, encoded but output file have a reduced time duration; it's only part of the original mp3 file
 - tried with wav files, doesn't play anything and can't open audacity at all
 - tried using a differnt way to encode for mp3, better but still corrupted where the message is encoded
+
+### Fri, 5/31 to Sun, 6/2
+- change starting byte to 1024
+- instead of changing the last two bit for every byte, do it for every four byte
+- solved the problem for time duration cutoff but now the encrypted audio file has a lot of noise in places where hidden file is embedded
+- start working on user input so that people can actually use it and for the purpose of not showing code
+
+### Mon, 6/3 to Tue, 6/4
+- add user input control to encode
+- change mp3 file to wav file, works better
+- change interval of bytes to two (have to be even number) so that it doesn't make weird noises in the background
+- testing with hidding image and txt files into different wav files, all works
+- working on readme and presentation md
