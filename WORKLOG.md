@@ -105,3 +105,8 @@ Start working on README: adding onto and revising what Regina wrote, working on 
 - change interval of bytes to two (have to be even number) so that it doesn't make weird noises in the background
 - testing with hidding image and txt files into different wav files, all works
 - working on readme and presentation md
+
+### Wed, 6/5 to Thur, 6/6
+- revise readme
+- working on script for video, will edit and revise before putting onto the presentation md
+- plan for how the video will be formated
