@@ -108,5 +108,5 @@ Start working on README: adding onto and revising what Regina wrote, working on 
 
 ### Wed, 6/5 to Thur, 6/6
 - revise readme
-- - plan for how the video will be formated
+- plan for how the video will be formated
 - working on script for video, will edit and revise before putting onto the presentation md, starting with the basic structures of an audio file and then will progress to explaining how our thing works. Last will be demo (expecting demo time to be between 6-9 min)
