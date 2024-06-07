@@ -110,3 +110,7 @@ Video recording + editing, final video completed. Revised with Regina's feedback
 - revise readme
 - plan for how the video will be formated
 - working on script for video, will edit and revise before putting onto the presentation md, starting with the basic structures of an audio file and then will progress to explaining how our thing works. Last will be demo (expecting demo time to be between 6-9 min)
+
+### Fri, 6/7 to Sun, 6/9
+- still working and will finish on Friday on script for presentation: going over basic structure of audio file and then how our program works, will draw some pics
+- will try to finish recording video on Saturaday
