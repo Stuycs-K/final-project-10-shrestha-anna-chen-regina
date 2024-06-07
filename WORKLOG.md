@@ -46,17 +46,17 @@ Trying to continue testing, decode worked initially but fails after a certain po
 
 Start working on README: adding onto and revising what Regina wrote, working on the decode instructions and overview.
 
-### Mon, 6/5
+### Thu, 6/6
 
--
+Meeting on Zoom to discuss video plans: division of work(who says what) is decided, and further meetings as well(on Google Dos). I will be doing video editing, and we will record asynchronously due to schedule conflicts.
 
-### Mon, 6/5
+### Fri, 6/7
 
--
+More tests to make sure our program works: string, txt and wav encryption that we haven't really tested.
 
-### Mon, 6/5
+### Sat, 6/8 - Sun, 6/9
 
--
+Video recording + editing, final video completed. Revised with Regina's feedback.
 
 ## GROUP MEMBER 2: Regina Chen
 
