@@ -13,7 +13,7 @@ int MODE = 2;
 void setup() {
   size(200, 200);
   String[] input = loadStrings("userinput.txt");
-  if(input.length!=3){
+  if(input.length<3){
     print("Invalid input format!");
   }else{
     println(input[0]);
@@ -23,7 +23,7 @@ void setup() {
       MODE = STRING;
     }else if(mode.equals("IMG")){
       MODE = IMG;
-    }else if(mode.equals("MODE")){
+    }else if(mode.equals("FILE")){
       MODE = FILE;
     }else{
       println("Invalid mode: "+mode);
