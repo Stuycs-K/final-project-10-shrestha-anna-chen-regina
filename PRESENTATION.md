@@ -8,9 +8,9 @@ the information hider embeds the secret information in the least significant bit
   - Uncompressed format: audio data are stored in a series of audio samples where each sample represents the amplitude of the audio signal at a specific point in time. It's lossless which means that manipulating the file (converting or compressing) will make it experience negligible loss in sound quality
   - Compressed format: audio data are stored in frames, which contain the audio samples. Each frame includes a header with information about the frame length, bit rate, and sample rate, followed by the compressed audio data. These frames often include error detection or correction data to ensure integrity.
 
-## How our program works:
+## How our program generally works:
 Remember how we use the least significant bit of the red byte in the rgb of the pixels in class to hide messages and other files 
 Our program is similar to that but instead of using pixels, we’re using the actual bytes of the audio file, just like how we would access bytes in regular text files.
 
-Our program uses wav files since wav files are uncompressed and so it's easier to modify. In addition, since uncompressed files are loseless, the sound 
-First, we will need to skipped the header section so that we’re directly manipulating the audio data 
+Our program uses wav files since wav files are in uncompressed format. 
+We're only manipulating the audio data section of the audio file and anything after that. We're not touching the header and metadata since it'll be really easy for people to figure out whether the song name or anything is manipulated. 
