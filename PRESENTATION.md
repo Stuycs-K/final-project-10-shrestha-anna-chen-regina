@@ -16,7 +16,7 @@
 ## How our tool generally works:
 - Audio steganography that allows you to:
   - embed messages, txt files, and png image files into wav files without making human detectable differences
-  - extract messages txt files, and png image files from wav files
+  - extract messages, txt files, and png image files from wav files
 - wav files: audio data stored in uncompressed format
 - manipulate the least significant bit of the bytes in the audio data only
 - change only the least significant bit of every other byte
