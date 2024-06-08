@@ -10,7 +10,8 @@
 ## Mono/Stereo Sound files
 - Mono: only has one channel</br>
 <img width="763" alt="Screenshot 2024-06-08 at 4 17 22 PM" src="https://github.com/Stuycs-K/final-project-10-shrestha-anna-chen-regina/assets/112907876/9f24ac49-792f-4b88-b287-35b5c7552d94">
-- Stereo: two channels, a left channel and a right channel
+- Stereo: two channels, a left channel and a right channel</br>
+<img width="774" alt="Screenshot 2024-06-08 at 4 24 24 PM" src="https://github.com/Stuycs-K/final-project-10-shrestha-anna-chen-regina/assets/112907876/f1333896-f658-4419-bae7-b4b2482252df">
 
 ## How our program generally works:
 - wav files: audio data stored in uncompressed format
