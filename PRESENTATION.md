@@ -1,7 +1,8 @@
 # LSB (least significant bit) Audio Steganography
 
 ## Basic structure of an audio file
-- Header: format of audio file (mp3, wav, m4a, etc) and how these data are stored
+- Header:
+  - format of audio file and how the data are stored
   - the sample rate, number of channels (mono or stereo), byte rate, etc
   - Metadata: title of song and album, artist names, track number, cover art, etc
 - Audio data:
