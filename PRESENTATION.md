@@ -4,7 +4,7 @@
 - Header:
   - format of audio file and how the data are stored
   - the sample rate, number of channels (mono or stereo), byte rate, etc
-  - Metadata: title of song and album, artist names, track number, cover art, etc
+  - Metadata: title of song and album, artist name, track number, cover art, etc
 - Audio data:
   - Uncompressed format: audio data are stored in a series of audio samples where each sample represents the amplitude of the audio signal at a specific point in time. It's lossless which means that manipulating the file (converting or compressing) will make it experience negligible loss in sound quality
   - Compressed format: audio data are stored in frames, which contain the audio samples. Each frame includes a header with information about the frame length, bit rate, and sample rate, followed by the compressed audio data. These frames often include error detection or correction data to ensure integrity.
