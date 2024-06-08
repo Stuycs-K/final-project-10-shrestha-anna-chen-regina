@@ -7,7 +7,7 @@
   - Metadata: title of song and album, artist name, track number, cover art, etc
 - Audio data:
   - Uncompressed format: audio data are stored in a series of audio samples where each sample represents the amplitude of the audio signal at a specific point in time. It's lossless which means that manipulating the file (converting or compressing) will make it experience negligible loss in sound quality
-  - Compressed format: audio data are stored in frames, which carries the audio samples. Each frame includes a header with information about the frame length, bit rate, and sample rate, followed by the compressed audio data. These frames often include error detection or correction data to ensure integrity.
+  - Compressed format: audio data are stored in frames, which carry the audio samples. Each frame includes a header with information about the frame length, bit rate, and sample rate, followed by the compressed audio data. These frames often include error detection or correction data to ensure integrity.
 
 ## Mono/Stereo Sound files
 - Mono: only has one channel</br> <img width="763" alt="Screenshot 2024-06-08 at 4 17 22 PM" src="https://github.com/Stuycs-K/final-project-10-shrestha-anna-chen-regina/assets/112907876/9f24ac49-792f-4b88-b287-35b5c7552d94">
