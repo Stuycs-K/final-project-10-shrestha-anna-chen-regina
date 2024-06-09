@@ -56,7 +56,7 @@ More tests to make sure our program works: string, txt and wav encryption that w
 
 ### Sat, 6/8 - Sun, 6/9
 
-Video recording + editing, final video completed. Revised with Regina's feedback.
+Video recording + editing/trimming to fit in the time limit, final video completed. Revised with Regina's feedback.
 
 ## GROUP MEMBER 2: Regina Chen
 
